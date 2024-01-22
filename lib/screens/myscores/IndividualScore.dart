@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_quiz/backEnd/database.dart';
-import 'package:mobile_quiz/constants/widgets.dart';
+import 'package:mobile_quiz/constants/decoration.dart';
 import 'package:mobile_quiz/widgets/loadingGeneral.dart';
-import 'package:intl/intl.dart';
+
 
 class IndividualScore extends StatefulWidget {
 
@@ -26,12 +26,6 @@ class _IndividualScoreState extends State<IndividualScore> {
     });
   }
 
-  quizDateForQuizPage(){
-    var dateOrder;
-    DateTime dateTime = DateTime.now();
-     dateOrder = DateFormat("yyyy-MM-dd HH:mm:ss").format(dateTime).toString();
-    // var date = DateFormat("EEE, MMM d, y").format(dateTime).toString();
-  }
 
 
   @override

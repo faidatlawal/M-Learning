@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobile_quiz/backEnd/UserClass.dart';
 
 
 class MyAuthServices{
   FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseFirestore firebaseFireStore = FirebaseFirestore.instance;
   UserClass _userGetFromFirebase(User user){
     return user != null ? UserClass(userId: user.uid): null;
   }
@@ -34,5 +36,4 @@ class MyAuthServices{
       print(e.toString());
     }
   }
-
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 import 'package:mobile_quiz/backEnd/database.dart';
-import 'package:mobile_quiz/constants/widgets.dart';
+import 'package:mobile_quiz/constants/decoration.dart';
 import 'package:mobile_quiz/screens/courseWork/assignments/assignmentHomeScreen.dart';
 import 'package:mobile_quiz/screens/courseWork/notes/notesHomePage.dart';
 import 'package:mobile_quiz/screens/courseWork/notification/noticationScreen.dart';
@@ -47,7 +47,7 @@ class _CoursesWorkFirstPageState extends State<CoursesWorkFirstPage> {
         title: Row(
           children: <Widget>[
             Expanded(
-                child: FlatButton.icon(
+                child: ElevatedButton.icon(
                     onPressed: () {
                       setState(() => _selectedPage = Page.records);
                     },
@@ -57,7 +57,7 @@ class _CoursesWorkFirstPageState extends State<CoursesWorkFirstPage> {
                     ),
                     label: Text('QUIZ', style: TextStyle(color:  _selectedPage == Page.records ? active : notActive, fontWeight: FontWeight.bold),))),
             Expanded(
-                child: FlatButton.icon(
+                child: ElevatedButton.icon(
                     onPressed: () {
                       setState(() => _selectedPage = Page.services);
                     },
@@ -180,7 +180,7 @@ class CourseActivitiesCard extends StatelessWidget {
           shape: RoundedRectangleBorder(
               borderRadius:BorderRadius.circular(10) ),
           color: buttonColor1,
-          child:  FlatButton(
+          child:  ElevatedButton(
                   onPressed: onPressedFunction,
                   child: Text(textString, style: TextStyle(color: appB, fontWeight: FontWeight.bold),)),
               ),

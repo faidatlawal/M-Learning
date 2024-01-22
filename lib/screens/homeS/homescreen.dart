@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mobile_quiz/backEnd/authentication.dart';
 import 'package:mobile_quiz/backEnd/database.dart';
-import 'package:mobile_quiz/constants/widgets.dart';
+import 'package:mobile_quiz/constants/decoration.dart';
 import 'package:mobile_quiz/screens/aboutPage.dart';
-import 'package:mobile_quiz/screens/accountSettings/myAccount.dart';
 import 'package:mobile_quiz/screens/courseWork/coursesWorkFirstPage.dart';
 import 'package:mobile_quiz/screens/myscores/myscoreHome.dart';
+import 'package:mobile_quiz/screens/userAccount/myAccount.dart';
 import 'package:mobile_quiz/sharedPrefs/userSharedPrefs.dart';
 import 'package:mobile_quiz/userAuthentication/authenticationPage.dart';
 
@@ -40,12 +40,13 @@ class _HomeScreenState extends State<HomeScreen> {
         snapshotDetails = value;
       });
     });
+
+
     currentLevel = await UserPreference.getUserLoggedLevel();
     userName = await UserPreference.getUserLoggedName();
     userMatricNo = await UserPreference.getUserLoggedMatricNo();
 
     setState(() {
-
     });
   }
 
@@ -76,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height / 2.5,
+              height: MediaQuery.of(context).size.height / 3.0,
               alignment: Alignment.topLeft,
               color: appB,
               child: Padding(
@@ -84,15 +85,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: CircleAvatar(
-                        radius: 40,
-                        backgroundColor: buttonColor1,
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(vertical: 8),
+                    //   child: CircleAvatar(
+                    //     radius: 40,
+                    //     backgroundColor: buttonColor1,
+                    //   ),
+                    // ),
                     SizedBox(height: 8,),
-                    Flexible(child: Text("${userName == "" || userName == null ? "" : userName.toUpperCase()}", style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: buttonColor1), overflow: TextOverflow.ellipsis, maxLines: 1, )),
+                    Flexible(child: Text("${userName == "" || userName == null ? ""
+                        : userName.toUpperCase()}", style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: buttonColor1),
+                      overflow: TextOverflow.ellipsis, maxLines: 1, ),
+                    ),
                     SizedBox(height: 10,),
                     Flexible(child: Text("${userMatricNo == "" || userMatricNo == null ? "" : userMatricNo}", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: buttonColor1),)),
                     SizedBox(height: 10,),

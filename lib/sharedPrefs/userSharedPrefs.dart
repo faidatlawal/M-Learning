@@ -11,8 +11,6 @@ class UserPreference{
   static String userLoggedInRegDate = "loggedUserRegDate";
   static String userLoggedInRegTime = "loggedUserRegTime";
 
-
-
   // ========================= SETTING PREFERENCES ========================
 
   static Future <bool> setUserLoggedPreference({bool logPrefs})async{
@@ -56,7 +54,6 @@ class UserPreference{
   }
 
 // ========================= GETTING PREFERENCES ========================
-
 
 static Future <bool> getUserLoggedPreference()async{
     SharedPreferences preferences = await SharedPreferences.getInstance();

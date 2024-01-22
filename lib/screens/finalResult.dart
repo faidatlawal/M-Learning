@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_quiz/constants/widgets.dart';
+import 'package:mobile_quiz/constants/decoration.dart';
 import 'package:mobile_quiz/screens/homeS/homescreen.dart';
 
 class FinalResults extends StatefulWidget {

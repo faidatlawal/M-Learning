@@ -6,16 +6,18 @@ class MyDatabaseServices{
 
 
 Future getCourseList({String levelIdL})async{
-    return await firebaseFireStore.collection('Levels').doc(levelIdL).collection('Courses').snapshots();
+    return firebaseFireStore.collection('Levels').doc(levelIdL).collection('Courses').snapshots();
 }
 
 Future displayLevels({String userLevelName})async{
-    return await firebaseFireStore.collection('Levels').where("levelName", isEqualTo: userLevelName).snapshots();
+    return  firebaseFireStore.collection('Levels').where("levelName", isEqualTo: userLevelName).snapshots();
   }
 
   Future questionUserTesting({String levelCid, String courseId, })async{
-    return await firebaseFireStore.collection('Levels').doc(levelCid).collection('Courses').doc(courseId).collection('Questions').snapshots();
+    return  firebaseFireStore.collection('Levels').doc(levelCid).collection('Courses').doc(courseId).collection('Questions').snapshots();
   }
+
+
 
   Future <void> setUserData({Map docData, String userId})async{
     firebaseFireStore.collection('Users').doc(userId).set(docData).catchError((error) => print(error.toString()));
@@ -30,9 +32,7 @@ Future displayLevels({String userLevelName})async{
     return await firebaseFireStore.collection('Users').doc(userId).get();
   }
 
-  Future loadLectureNotes({String levelCid, String courseId, })async{
-    return await firebaseFireStore.collection('Levels').doc(levelCid).collection('Courses').doc(courseId).collection('lectureNotes').snapshots();
-  }
+
 
 
   Future storeUserByLevel({String levelName, String userID, Map userDoc})async{
@@ -52,24 +52,27 @@ Future displayLevels({String userLevelName})async{
   }
 
   Future getUserScoreCourse({String uid})async{
-    return await firebaseFireStore.collection("UserScores").doc(uid).collection("Course").snapshots();
+    return  firebaseFireStore.collection("UserScores").doc(uid).collection("Course").snapshots();
   }
 
   Future getUserScore({String uid, String courseName,})async{
-    return await firebaseFireStore.collection("UserScores").doc(uid).collection("Course").doc(courseName).collection("Scores").snapshots();
+    return  firebaseFireStore.collection("UserScores").doc(uid).collection("Course").doc(courseName).collection("Scores").orderBy("dateOrder", descending: true).snapshots();
   }
 
+  Future loadLectureNotes({String levelCid, String courseId, })async{
+    return  firebaseFireStore.collection('Levels').doc(levelCid).collection('Courses').doc(courseId).collection('lectureNotes').snapshots();
+  }
 
   Future loadAssignments({String levelCid, String courseId, })async{
-    return await firebaseFireStore.collection('Levels').doc(levelCid).collection('Courses').doc(courseId).collection('Assignments').snapshots();
+    return  firebaseFireStore.collection('Levels').doc(levelCid).collection('Courses').doc(courseId).collection('Assignments').snapshots();
   }
 
   Future loadPastQ({String levelCid, String courseId, })async{
-    return await firebaseFireStore.collection('Levels').doc(levelCid).collection('Courses').doc(courseId).collection('pastQuestions').snapshots();
+    return  firebaseFireStore.collection('Levels').doc(levelCid).collection('Courses').doc(courseId).collection('pastQuestions').snapshots();
   }
 
   Future loadNotification({String levelCid, String courseId, })async{
-    return await firebaseFireStore.collection('Levels').doc(levelCid).collection('Courses').doc(courseId).collection('Notifications').snapshots();
+    return  firebaseFireStore.collection('Levels').doc(levelCid).collection('Courses').doc(courseId).collection('Notifications').snapshots();
   }
 
 }

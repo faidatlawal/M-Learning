@@ -13,7 +13,7 @@ class TimerScoreKeeper{
 
 // ================================ADMIN SAVING SCORE==========================
 // var time = TimeOfDay.now();
-    final now  = DateTime.now();
+
 
     DateTime datetime = DateTime.now();
 //            int miLi = datetime.millisecondsSinceEpoch;
@@ -34,6 +34,9 @@ class TimerScoreKeeper{
       "UserId": auth.currentUser.uid,
     });
 //============================UserSaving scores Data ENDS HERE ================
+    var dateOrder;
+    DateTime dateTime = DateTime.now();
+    dateOrder = DateFormat("yyyy-MM-dd HH:mm:ss").format(dateTime).toString();
 
     await myDatabaseServices.storeScoreAdmin(
       scoreMap: <String, dynamic>{
@@ -44,15 +47,18 @@ class TimerScoreKeeper{
         "name": username,
         "level": level,
         "time": newTime.toString(),
+        "dateOrder": dateOrder,
       },
       levelName: levelTitle, courseName: courseTitle,
     );
 //===================================User saving score =============================
+
     await myDatabaseServices.storeUserScore(userScores: <String, dynamic>{
       "courseTitle": courseTitle,
       "score": correct,
       "time": newTime.toString(),
       "date":formattedDate.toString(),
+      "dateOrder": dateOrder,
     }, courseName: courseTitle, userId: auth.currentUser.uid);
 // set UserCourseName====================
     await myDatabaseServices.setUserCourseName(uid: auth.currentUser.uid, courseName: courseTitle,

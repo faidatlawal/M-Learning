@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_quiz/constants/widgets.dart';
+import 'package:mobile_quiz/constants/decoration.dart';
 import 'package:mobile_quiz/userAuthentication/login.dart';
 import 'package:mobile_quiz/userAuthentication/register.dart';
 

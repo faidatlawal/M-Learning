@@ -5,7 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mobile_quiz/backEnd/authentication.dart';
 import 'package:mobile_quiz/backEnd/database.dart';
-import 'package:mobile_quiz/constants/widgets.dart';
+import 'package:mobile_quiz/constants/decoration.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_quiz/screens/homeS/homescreen.dart';
@@ -66,9 +66,6 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    if (loading == true) {
-      return LoadingGeneral();
-    } else {
       return Scaffold(
       backgroundColor: backgroundColor2,
       appBar: AppBar(
@@ -81,7 +78,7 @@ class _RegisterState extends State<Register> {
         centerTitle: true,
         elevation: 0.0,
       ),
-      body: GestureDetector(
+      body: loading == true ? LoadingGeneral(): GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Container(
           padding: EdgeInsets.all(15),
@@ -310,9 +307,11 @@ class _RegisterState extends State<Register> {
                                           value: 'Male', focusColor: buttonColor1, activeColor: buttonColor1,
                                           groupValue: groupValue,
                                           onChanged: (newValue) =>
-                                              unChanged(newValue)),
+                                              unChanged(newValue),
+                                      ),
                                 ],
-                              )),
+                              ),
+                          ),
                           Expanded(
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -432,7 +431,7 @@ class _RegisterState extends State<Register> {
                                         title: Text("Error"),
                                         content: Text("Invalid details"),
                                         actions: [
-                                          FlatButton(
+                                          ElevatedButton(
                                               onPressed: () {
                                                 Navigator.pop(context);
                                                 controllerForEmail.clear();
@@ -473,7 +472,7 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
-    }
+
   }
 
   unChanged(val) {

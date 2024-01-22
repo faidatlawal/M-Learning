@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mobile_quiz/backEnd/authentication.dart';
-import 'package:mobile_quiz/constants/widgets.dart';
+import 'package:mobile_quiz/constants/decoration.dart';
 import 'package:mobile_quiz/screens/homeS/homescreen.dart';
 import 'package:mobile_quiz/sharedPrefs/userSharedPrefs.dart';
 import 'package:mobile_quiz/userAuthentication/register.dart';
@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
   MyAuthServices myAuthServices = MyAuthServices();
   @override
   Widget build(BuildContext context) {
-    return loadingPage == true ? LoadingGeneral(): Scaffold(
+   return Scaffold(
       backgroundColor: backgroundColor2,
       appBar: AppBar(
         backgroundColor: appBarColor2,
@@ -40,7 +40,7 @@ class _LoginState extends State<Login> {
         centerTitle: true,
         elevation: 0.0,
       ),
-      body: GestureDetector(
+      body: loadingPage == true ? LoadingGeneral(): GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Container(
           padding: EdgeInsets.all(15),
@@ -51,6 +51,7 @@ class _LoginState extends State<Login> {
                 SizedBox(height: MediaQuery.of(context).size.height / 4),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextFormField(
                       controller: controllerForEmail,
@@ -97,7 +98,7 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 16,),
+                    SizedBox(height: 18,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -106,6 +107,7 @@ class _LoginState extends State<Login> {
                           onTap: ()=> Navigator.pushReplacementNamed(context, Register.id),),
                       ],
                     ),
+
                     SizedBox(height: MediaQuery.of(context).size.height / 12,),
                     GestureDetector(
                         onTap: ()async{
@@ -150,7 +152,7 @@ class _LoginState extends State<Login> {
                                         title: Text("Error"),
                                         content: Text("Invalid details"),
                                         actions: [
-                                          FlatButton(onPressed: (){
+                                          ElevatedButton(onPressed: (){
                                             Navigator.pop(context);
                                           },
                                               child: Text("OK", style: TextStyle(color: iconColor2, fontWeight: FontWeight.bold),)),

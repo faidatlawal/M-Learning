@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_quiz/backEnd/database.dart';
-import 'package:mobile_quiz/constants/widgets.dart';
+import 'package:mobile_quiz/constants/decoration.dart';
 import 'package:mobile_quiz/widgets/loadingGeneral.dart';
+import '../displayPDF.dart';
 
 class PastQList extends StatefulWidget {
 
@@ -28,10 +29,15 @@ class _PastQListState extends State<PastQList> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Past Questions", style: TextStyle(color: buttonColor1),),
+        backgroundColor: backgroundColor2,
+        elevation: 0.0,
+        iconTheme: IconThemeData(color: buttonColor1),
+      ),
       body: Container(
           width: MediaQuery.of(context).size.width,
           child: StreamBuilder(
@@ -40,9 +46,32 @@ class _PastQListState extends State<PastQList> {
               return  !snaps.hasData ? Center(child: LoadingGeneral()): ListView.builder(
                   itemCount: snaps.data.docs.length,
                   itemBuilder: (context, index){
-                    return ListTile(
-                      title: Text(snaps.data.docs[index].data()['assignDoc']),
-                      subtitle: Text(snaps.data.docs[index].data()['timePosted'].toString()),
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: buttonColor1,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return DisplayPdf(fileUrl: snaps.data.docs[index].data()['noteDoc'], courseCode: snaps.data.docs[index].data()['courseCode']);
+                            }));
+                          },
+                          child: ListTile(
+                            title: Text(snaps.data.docs[index].data()['comment'], style: TextStyle(color: Colors.white), maxLines: 1, overflow: TextOverflow.ellipsis,),
+                            subtitle: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(snaps.data.docs[index].data()['datePosted'].toString(), style: TextStyle(color: Colors.white),),
+                                Text(snaps.data.docs[index].data()['time'].toString(), style: TextStyle(color: Colors.white),),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     );
                   });
             },

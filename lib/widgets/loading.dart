@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_quiz/constants/widgets.dart';
+import 'package:mobile_quiz/constants/decoration.dart';
 import 'package:mobile_quiz/screens/homeS/homescreen.dart';
 import 'package:mobile_quiz/sharedPrefs/userSharedPrefs.dart';
 import 'package:mobile_quiz/userAuthentication/authenticationPage.dart';
@@ -48,10 +48,6 @@ class _LoadingState extends State<Loading> {
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
           color: appBarColor2.withOpacity(0.1),
-//          image: DecorationImage(
-//            colorFilter: ColorFilter.mode(appBarColor2.withOpacity(0.04), BlendMode.dstATop),
-//          //  colorFilter: ColorFilter()
-//          ),
         ),
         child: Column(
           children: [

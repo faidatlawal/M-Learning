@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_quiz/constants/widgets.dart';
+import 'package:mobile_quiz/constants/decoration.dart';
 import 'package:mobile_quiz/screens/courseWork/assignments/assignmentList.dart';
 
 class AssignmentHomeScreen extends StatefulWidget {
