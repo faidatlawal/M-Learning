@@ -1,4 +1,4 @@
-# mobile_quiz
+# mobile_learning
 
 A new Flutter application.
 
